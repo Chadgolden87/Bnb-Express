@@ -6,8 +6,8 @@ const {Pool} = pg;
 let app = express();
 
 const pool = new Pool({
-  user: "chadgolden",
-  host: "localhost",
+  user: "neondb_owner",
+  host: "postgresql://neondb_owner:7Mn9buGzOWXv@ep-wispy-moon-a5sw4qo7-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require",
   database: "bnb",
   password: "password",
   port: 5432,
