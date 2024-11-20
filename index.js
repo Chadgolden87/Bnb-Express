@@ -8,13 +8,13 @@ let app = express();
 const pool = new Pool({
   user: "neondb_owner",
   host: "postgresql://neondb_owner:7Mn9buGzOWXv@ep-wispy-moon-a5sw4qo7-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require",
-  database: "bnb",
+  database: "neondb",
   password: "password",
   port: 5432,
 });
 
 const corsOptions = {
-  origin: "https://bnb-express.vercel.app/",
+  origin: "https://bnbvue.vercel.app/",
   credentials: true,
   optionSuccessStatus: 200,
 };
