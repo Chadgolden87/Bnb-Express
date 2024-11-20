@@ -14,7 +14,7 @@ const pool = new Pool({
 });
 
 const corsOptions = {
-  origin: "*",
+  origin: "https://bnb-express.vercel.app/",
   credentials: true,
   optionSuccessStatus: 200,
 };
