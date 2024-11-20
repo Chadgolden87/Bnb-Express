@@ -13,6 +13,7 @@ const pool = new Pool({
   port: 5432,
 });
 
+const cors = require('cors')
 const corsOptions = {
   origin: "https://bnbvue.vercel.app/",
   credentials: true,
@@ -21,6 +22,21 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
+
+
+
+
+
+app.get('/library', (req, res) => {
+  res.status(200).json({ message: 'CORS is working!'})
+})
+
+
+
+
+
+
+
 
 app.get("/");
 
