@@ -6,7 +6,7 @@ const { Pool } = pg;
 let app = express();
 
 const pool = new Pool({
-  username: "neondb_owner",
+  user: "neondb_owner",
   host: "ep-wispy-moon-a5sw4qo7-pooler.us-east-2.aws.neon.tech",
   database: "neondb",
   password: "7Mn9buGzOWXv",
