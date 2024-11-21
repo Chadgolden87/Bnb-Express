@@ -1,8 +1,8 @@
-import cors from "cors"
+import cors from "cors";
 import express from "express";
 import bodyParser from "body-parser";
 import pg from "pg";
-const {Pool} = pg;
+const { Pool } = pg;
 let app = express();
 
 const pool = new Pool({
@@ -22,13 +22,18 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "https://bnbvue.vercel.app"); 
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "https://bnbvue.vercel.app");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
   next();
 });
 
-app.get("/");
+app.get("/", function (req, res) {
+  res.status(200).json({ success: true });
+});
 
 app.get("/upcoming", function (req, res) {
   pool.query(
@@ -43,20 +48,27 @@ app.get("/upcoming", function (req, res) {
 });
 
 app.get("/library/:id", function (req, res) {
-    let id = req.params.id;
-  
-    pool.query("SELECT * FROM library WHERE id = $1", [id], function (error, results) {
+  let id = req.params.id;
+
+  pool.query(
+    "SELECT * FROM library WHERE id = $1",
+    [id],
+    function (error, results) {
       if (error) {
         throw error;
       }
       res.status(200).json(results.rows);
-    });
-  });
+    }
+  );
+});
 
 app.get("/library", function (req, res) {
   res.header("Access-Control-Allow-Origin", corsOptions.origin);
-res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-res.type('application/json');
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.type("application/json");
   pool.query("SELECT * FROM library", function (error, results) {
     if (error) {
       throw error;
@@ -64,10 +76,6 @@ res.type('application/json');
     res.status(200).json(results.rows);
   });
 });
-
-
-
-
 
 app.get("/volunteer", function (req, res) {
   pool.query("SELECT * FROM volunteers", function (error, results) {
@@ -108,4 +116,4 @@ app.get("/donations", function (req, res) {
 });
 
 app.listen(3000);
-export default app
+export default app;
