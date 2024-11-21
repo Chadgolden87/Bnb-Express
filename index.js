@@ -25,14 +25,14 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "https://bnbvue.vercel.app");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
+// app.use(function (req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "https://bnbvue.vercel.app");
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
+//   next();
+// });
 
 app.get("/", function (req, res) {
   res.status(200).json({ success: true });
@@ -66,12 +66,12 @@ app.get("/library/:id", function (req, res) {
 });
 
 app.get("/library", function (req, res) {
-  res.header("Access-Control-Allow-Origin", corsOptions.origin);
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  res.type("application/json");
+  // res.header("Access-Control-Allow-Origin", corsOptions.origin);
+  // res.header(
+  //   "Access-Control-Allow-Headers",
+  //   "Origin, X-Requested-With, Content-Type, Accept"
+  // );
+  // res.type("application/json");
   pool.query("SELECT * FROM library", function (error, results) {
     if (error) {
       throw error;
