@@ -13,7 +13,6 @@ const pool = new Pool({
   port: 5432,
 });
 
-const cors = require('cors')
 const corsOptions = {
   origin: "https://bnbvue.vercel.app/",
   credentials: true,
