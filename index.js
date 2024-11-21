@@ -6,11 +6,14 @@ const { Pool } = pg;
 let app = express();
 
 const pool = new Pool({
-  user: "neondb_owner",
-  host: "postgresql://neondb_owner:7Mn9buGzOWXv@ep-wispy-moon-a5sw4qo7-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require",
+  username: "neondb_owner",
+  host: "ep-wispy-moon-a5sw4qo7-pooler.us-east-2.aws.neon.tech",
   database: "neondb",
-  password: "password",
+  password: "7Mn9buGzOWXv",
   port: 5432,
+  ssl: {
+    require: true,
+  },
 });
 
 const corsOptions = {
